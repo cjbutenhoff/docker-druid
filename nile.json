@@ -1,0 +1,44 @@
+{
+    "name": "docker-druid",
+    "cluster": "alpine.nile.works",
+    "port": 8081,
+    "routes": [
+        {
+            "path": "/",
+            "external": false
+        }
+    ],
+    "limits": {
+        "memory": "4g"
+    },
+    "builds": [
+        {
+            "branch": "master",
+            "notify": "perso-hal",
+            "tags": [
+                "0.0.1",
+                "latest"
+            ],
+            "version": "0.0.1"
+        }
+    ],
+    "environment": {
+        "AESKEY": "%{CiDs64XXaUdcSoTdMUm4z7VvwXpcmDZfZxaUAGHsEXkRJBLLAQEBAgB47OuF12lHXEqE3TFJuM+1b8F6XJg2X2cWlABh7BF5ESQAAACiMIGfBgkqhkiG9w0BBwaggZEwgY4CAQAwgYgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMgM6FVtHmrqEen6jjAgEQgFs+hmc2lTTSRDm3+c7qz4n9mcvjI/D6uLYM53X0GMcJVMXvWh+ADkFL1ZWdxPKoK0VfgCPn86k9Hk0DlJxP416PS67vofyYH1sKMZjVH24mUQxbI2EuNdH9FaR4}",
+        "S3_PATH_PREFIX": "%{CiDs64XXaUdcSoTdMUm4z7VvwXpcmDZfZxaUAGHsEXkRJBK4AQEBAgB47OuF12lHXEqE3TFJuM+1b8F6XJg2X2cWlABh7BF5ESQAAACPMIGMBgkqhkiG9w0BBwagfzB9AgEAMHgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMJnRLIG49K3kZBID1AgEQgEtATalhI2zZ7x8bUqHZziWthw9P+Dn97mhSF67cQwSl70WGY/bMChoQsi2JFjevsBxK6l2V8wcTrKvNlSXmv0lHMXPlR1rsiPGYAK8=}",
+        "NEW_RELIC_LICENSE_KEY": "%{CiDs64XXaUdcSoTdMUm4z7VvwXpcmDZfZxaUAGHsEXkRJBKwAQEBAgB47OuF12lHXEqE3TFJuM+1b8F6XJg2X2cWlABh7BF5ESQAAACHMIGEBgkqhkiG9w0BBwagdzB1AgEAMHAGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMRinBRj7wfDF2k67PAgEQgEOM1wRNH9Tv2DT5NDtFYZ68Gv2wjH1Yb386EkC0Hzqd3fAqYLgQZzUyQnWO6DqNlGY0dlZDDMS3nXyhJ7oNnFugsDjo}",
+        "NEW_RELIC_APP_NAME": "Docker Druid",
+        "NEW_RELIC_LOG": "stdout"
+    },
+    "stages": [
+        {
+            "domain": "docker-druid-test.wpit.nile.works",
+            "name": "test",
+            "scale": 1
+        },
+        {
+            "domain": "docker-druid-prod.wpit.nile.works",
+            "name": "prod",
+            "scale": 1
+        }
+    ]
+}
